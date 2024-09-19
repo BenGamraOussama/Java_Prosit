@@ -3,7 +3,6 @@ public class Animal {
     String name;
     int age;
     boolean isMammal;
-
     public Animal(String family, String name, int age, boolean isMammal){
         this.family = family;
         this.name = name;
@@ -13,8 +12,6 @@ public class Animal {
     public void displayAnimal(){
         System.out.println("family : "+family+" name: "+name+ " age :"+age+" is Mammal :"+isMammal);
     }
-
-
     public String toString() {
         return "family :" + family  + ", name : " + name  + ", age : " + age + ", isMammal : " + isMammal ;
     }
