@@ -1,3 +1,5 @@
+package tn.esprit.gestionzoo;
+
 public class Zoo {
     Animal[] animals;
     String name;
@@ -21,23 +23,27 @@ public class Zoo {
         return name;
     }
 
+    public void setName(String name) {
+        if (this.name == null) {
+            System.out.println("Name can't be null");
+        }
+        this.name = name;
+    }
+
 
     public boolean addAnimal(Animal animal) {
-        if (cmt >= MAX_ANIMALS) {
-            System.out.println("Zoo is full, can't add more animals.");
-            return false;
-        }
 
+        this.isZooFull();
 
         if (searchAnimal(animal.name) != -1) {
             System.out.println("L'animal existe déjà dans le zoo.");
-            return false; // Animal is already in the zoo
+            return false; // tn.esprit.gestionzoo.Animal is already in the zoo
         }
 
 
         animals[cmt] = animal;
         cmt++;
-        System.out.println("Animal ajouté avec succès.");
+        System.out.println("tn.esprit.gestionzoo.Animal ajouté avec succès.");
         return true;
     }
 
@@ -47,15 +53,20 @@ public class Zoo {
             System.out.println("- " + animals[i]);
         }
     }
+
     public void nbranimal() {
         System.out.println("Animals in the zoo:");
         for (int i = 0; i < cmt; i++) {
             System.out.println("- " + animals[i]);
         }
     }
+
+
     public int getAnimaux() {
         return cmt;
     }
+
+
     public int searchAnimal(String animalName) {
         for (int i = 0; i < cmt; i++) {
             if (animals[i] != null && animals[i].name.equals(animalName)) {
@@ -64,27 +75,42 @@ public class Zoo {
         }
         return -1;
     }
+
+
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal.getName());
+
+
         if (index != -1) {
+
             for (int i = index; i < cmt - 1; i++) {
                 animals[i] = animals[i + 1];
             }
+
+
             animals[cmt - 1] = null;
             cmt--;
+
             System.out.println("L'animal a été retiré avec succès.");
             return true;
         }
-        System.out.println("Animal non trouvé dans le zoo.");
+
+
+
+        System.out.println("tn.esprit.gestionzoo.Animal non trouvé dans le zoo.");
         return false;
     }
+
     public boolean isZooFull (){
         if (cmt >= MAX_ANIMALS) {
             return false;
         }
         return true;
     }
+
     public int displayNombreAnimaux() {
         return cmt;
     }
+
+
 }
